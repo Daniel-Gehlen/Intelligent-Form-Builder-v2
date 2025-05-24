@@ -32,7 +32,7 @@ Sistema completo de criação de formulários com integrações automáticas, au
 ## 🚀 Deploy Rápido na Vercel
 
 ### 1. **Preparação**
-\`\`\`bash
+```
 # Clone o repositório
 git clone <seu-repositorio>
 cd form-builder-inteligente
@@ -42,10 +42,10 @@ npm install
 
 # Teste local
 npm run dev
-\`\`\`
+```
 
 ### 2. **Deploy Automático**
-\`\`\`bash
+```
 # Conecte com a Vercel
 npx vercel
 
@@ -56,13 +56,13 @@ npx vercel
 # - Override settings? No
 
 # Deploy será feito automaticamente
-\`\`\`
+```
 
 ### 3. **Configurar Variáveis de Ambiente**
 
 No painel da Vercel, adicione:
 
-\`\`\`env
+```
 # Obrigatório - Chave de segurança JWT
 JWT_SECRET=sua-chave-super-secreta-aqui-min-32-chars
 
@@ -70,7 +70,7 @@ JWT_SECRET=sua-chave-super-secreta-aqui-min-32-chars
 CRM_API_KEY=sua-chave-crm
 MAILCHIMP_API_KEY=sua-chave-mailchimp
 MAILCHIMP_LIST_ID=id-da-lista-mailchimp
-\`\`\`
+```
 
 ### 4. **Verificação**
 - ✅ Acesse sua URL da Vercel
@@ -82,12 +82,12 @@ MAILCHIMP_LIST_ID=id-da-lista-mailchimp
 
 ### **Variáveis de Ambiente**
 
-| Variável | Obrigatória | Descrição |
-|----------|-------------|-----------|
-| `JWT_SECRET` | ✅ | Chave para assinatura JWT (min. 32 chars) |
-| `CRM_API_KEY` | ❌ | Chave da API do seu CRM |
-| `MAILCHIMP_API_KEY` | ❌ | Chave da API do Mailchimp |
-| `MAILCHIMP_LIST_ID` | ❌ | ID da lista do Mailchimp |
+| Variável            | Obrigatória | Descrição                                 |
+| ------------------- | ----------- | ----------------------------------------- |
+| `JWT_SECRET`        | ✅           | Chave para assinatura JWT (min. 32 chars) |
+| `CRM_API_KEY`       | ❌           | Chave da API do seu CRM                   |
+| `MAILCHIMP_API_KEY` | ❌           | Chave da API do Mailchimp                 |
+| `MAILCHIMP_LIST_ID` | ❌           | ID da lista do Mailchimp                  |
 
 ### **Configuração do Mailchimp**
 
@@ -111,35 +111,35 @@ O sistema suporta qualquer CRM com API REST. Configure:
 
 ### **1. Criando Formulários**
 
-\`\`\`typescript
+```
 // Acesse /builder
 // 1. Arraste campos da barra lateral
 // 2. Configure propriedades no painel direito
 // 3. Teste com Preview
 // 4. Salve e publique
-\`\`\`
+```
 
 ### **2. Campos Inteligentes**
 
 **CEP com Auto-preenchimento:**
-\`\`\`typescript
+```
 // Adicione campo tipo "CEP"
 // Sistema busca automaticamente:
 // - Endereço
 // - Bairro  
 // - Cidade
 // - Estado
-\`\`\`
+```
 
 **CNPJ com Auto-preenchimento:**
-\`\`\`typescript
+```
 // Adicione campo tipo "CNPJ"
 // Sistema busca automaticamente:
 // - Razão Social
 // - Nome Fantasia
 // - Endereço da Empresa
 // - Telefone
-\`\`\`
+```
 
 ### **3. Integrações Automáticas**
 
@@ -155,22 +155,22 @@ Quando um formulário é submetido:
 ### **4. Exportação de Formulários**
 
 **HTML Standalone:**
-\`\`\`typescript
+```
 // Gera arquivo HTML completo
 // - CSS incorporado
 // - JavaScript de validação
 // - Auto-preenchimento CEP/CNPJ
 // - Pronto para usar em qualquer site
-\`\`\`
+```
 
 **JSON Estruturado:**
-\`\`\`typescript
+```
 // Exporta estrutura do formulário
 // - Campos e validações
 // - Metadados
 // - Configurações
 // - Importável em outros sistemas
-\`\`\`
+```
 
 ## 🛡️ Segurança
 
@@ -192,13 +192,13 @@ Quando um formulário é submetido:
    - Escape de HTML
 
 4. **Headers de Segurança:**
-   \`\`\`
+   ```
    X-Content-Type-Options: nosniff
    X-Frame-Options: DENY
    X-XSS-Protection: 1; mode=block
    Strict-Transport-Security: max-age=31536000
    Content-Security-Policy: default-src 'self'
-   \`\`\`
+   ```
 
 ### **Monitoramento**
 
@@ -229,7 +229,7 @@ Automaticamente ativo para:
 
 ### **Estrutura do Projeto**
 
-\`\`\`
+```
 ├── app/                    # Next.js App Router
 │   ├── api/               # Endpoints da API
 │   ├── auth/              # Páginas de autenticação
@@ -246,11 +246,11 @@ Automaticamente ativo para:
 │   ├── integrations.ts   # Integrações externas
 │   └── validation.ts     # Validações e schemas
 └── middleware.ts         # Middleware de segurança
-\`\`\`
+```
 
 ### **Comandos Úteis**
 
-\`\`\`bash
+```
 # Desenvolvimento
 npm run dev
 
@@ -262,7 +262,7 @@ npm run lint
 
 # Deploy na Vercel
 npx vercel --prod
-\`\`\`
+```
 
 ### **Tecnologias Utilizadas**
 
@@ -278,7 +278,7 @@ npx vercel --prod
 ### **Problemas Comuns**
 
 **1. Build falha na Vercel:**
-\`\`\`bash
+```
 # Verificar logs
 npx vercel logs
 
@@ -286,33 +286,33 @@ npx vercel logs
 # - Verificar dependências no package.json
 # - Corrigir erros de TypeScript
 # - Verificar variáveis de ambiente
-\`\`\`
+```
 
 **2. Integrações não funcionam:**
-\`\`\`bash
+```
 # Verificar variáveis de ambiente
 # Testar conexões em /settings
 # Verificar logs da API
-\`\`\`
+```
 
 **3. Banco de dados não persiste:**
-\`\`\`bash
+```
 # Normal na Vercel - usar banco externo para persistência
 # Alternativas:
 # - Vercel Postgres
 # - PlanetScale
 # - Supabase
-\`\`\`
+```
 
 **4. Erro de CORS:**
-\`\`\`bash
+```
 # Verificar configuração no vercel.json
 # Adicionar headers CORS apropriados
-\`\`\`
+```
 
 ### **Logs e Debugging**
 
-\`\`\`bash
+```
 # Logs em tempo real
 npx vercel logs --follow
 
@@ -321,7 +321,7 @@ npx vercel logs --function=api/forms
 
 # Logs de build
 npx vercel logs --build
-\`\`\`
+```
 
 ## 📞 Suporte
 
