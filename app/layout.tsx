@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Intelligent Form Builder",
   description: "Create smart forms with drag-and-drop interface and auto-fill capabilities",
-    generator: 'v0.dev'
+  generator: 'danielgehlentech.dev'
 }
 
 export default function RootLayout({
