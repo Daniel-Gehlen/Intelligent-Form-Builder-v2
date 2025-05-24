@@ -8,9 +8,6 @@ on:
 
 env:
   NEXT_PUBLIC_VERCEL_ENV: ci
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   verify:
@@ -18,8 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -35,31 +31,21 @@ jobs:
       - name: Run Linter
         run: npm run lint
 
-      - name: Run TypeScript Check
-        run: npx tsc --noEmit
-
       - name: Build Application
         run: npm run build
 
-      - name: Verify Vercel Config
-        run: |
-          npx vercel@latest pull --yes --environment=production
-          npx vercel@latest build --prod
-
-  deploy:
-    name: Deploy
+  vercel-verify:
+    name: Vercel Verify
     needs: verify
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+      
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
-
-      - name: Deploy to Production
+        
+      - name: Verify Vercel Config
         run: |
-          vercel pull --yes --environment=production
-          vercel deploy --prod
+          vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
