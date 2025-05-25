@@ -6,5 +6,10 @@
   },
   "env": {
     "JWT_SECRET": "@jwt-secret"
+  },
+  "github": {
+    "enabled": true,
+    "autoJobCancelation": true,
+    "silent": false
   }
 }
